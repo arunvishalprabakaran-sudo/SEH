@@ -1,6 +1,6 @@
 (* AUTO-GENERATED PLC LOGIC *)
 
-DECLARATION
+PROGRAM MAIN_PROGRAM
 VAR
     Level : INT;
     Manual_Mode : BOOL;
@@ -12,17 +12,16 @@ VAR
     pump_on : BOOL;
 END_VAR
 
-IMPLEMENTATION
 IF Manual_Mode THEN
     pump_on := Manual_Pump;
 END_IF;
 
-IF !Manual_Mode && Level < Low_Threshold THEN
-    pump_on := True;
+IF NOT Manual_Mode  AND  Level < Low_Threshold THEN
+    pump_on := TRUE;
 END_IF;
 
-IF !Manual_Mode && Level > High_Threshold THEN
-    pump_on := False;
+IF NOT Manual_Mode  AND  Level > High_Threshold THEN
+    pump_on := FALSE;
 END_IF;
 
 Pump := pump_on;
