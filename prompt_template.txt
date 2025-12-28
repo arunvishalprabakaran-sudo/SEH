@@ -1,0 +1,22 @@
+SYSTEM ROLE:
+You are an industrial PLC logic designer.
+
+APPLICATION:
+{application}
+
+SIGNALS:
+Inputs:
+{inputs}
+
+Outputs:
+{outputs}
+
+OPERATING MODES:
+{modes}
+
+CONTROL RULES:
+{rules}
+
+CONSTRAINTS:
+- Use only BOOL and INT
+- No timers or PID

@@ -1,0 +1,5 @@
+There is a tank with a level sensor and a pump.
+The pump fills the tank.
+The operator can select manual or automatic mode.
+In manual mode, the pump follows operator command.
+In automatic mode, the pump turns ON when level is low and OFF when level is high.

@@ -1,0 +1,56 @@
+{
+  "FUNCTION_BLOCK": {
+    "Tank_Level_Control": {
+      "Inputs": [
+        {"Name": "Level", "Type": "INT"},
+        {"Name": "Manual_Mode", "Type": "BOOL"},
+        {"Name": "Manual_Pump", "Type": "BOOL"},
+        {"Name": "Low_Threshold", "Type": "INT"},
+        {"Name": "High_Threshold", "Type": "INT"}
+      ],
+      "Outputs": [
+        {"Name": "Pump", "Type": "BOOL"}
+      ]
+    }
+  },
+  "PROGRAM": {
+    "MAIN_PROGRAM": {
+      "VAR": [
+        {"Name": "auto_mode", "Type": "BOOL"},
+        {"Name": "pump_on", "Type": "BOOL"}
+      ],
+      "INIT": {
+        "auto_mode": false
+      },
+      "RUN": [
+        {
+          "CASE": {
+            "expr": "Manual_Mode",
+            "THEN": [
+              { "VAR": "pump_on", "ASSIGN": "Manual_Pump" }
+            ]
+          }
+        },
+        {
+          "CASE": {
+            "expr": "!Manual_Mode && Level < Low_Threshold",
+            "THEN": [
+              { "VAR": "pump_on", "ASSIGN": true }
+            ]
+          }
+        },
+        {
+          "CASE": {
+            "expr": "!Manual_Mode && Level > High_Threshold",
+            "THEN": [
+              { "VAR": "pump_on", "ASSIGN": false }
+            ]
+          }
+        }
+      ],
+      "OUTPUTS": [
+        {"Name": "Pump", "Value": "pump_on"}
+      ]
+    }
+  }
+}

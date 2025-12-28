@@ -1,0 +1,31 @@
+
+SYSTEM ROLE:
+You are an industrial PLC logic designer.
+
+APPLICATION:
+Tank level control system
+
+SIGNALS:
+Inputs:
+- Level : INT
+- Manual_Mode : BOOL
+- Manual_Pump : BOOL
+- Low_Threshold : INT
+- High_Threshold : INT
+
+Outputs:
+- Pump : BOOL
+
+OPERATING MODES:
+- Manual Mode
+- Automatic Mode
+
+CONTROL RULES:
+- If Manual_Mode = TRUE → Pump follows Manual_Pump
+- If Manual_Mode = FALSE:
+  - Pump ON when Level < Low_Threshold
+  - Pump OFF when Level > High_Threshold
+
+CONSTRAINTS:
+- Use only BOOL and INT
+- No timers or PID
